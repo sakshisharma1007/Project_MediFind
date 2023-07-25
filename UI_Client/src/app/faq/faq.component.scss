@@ -1,0 +1,56 @@
+body{
+    background: #f6f6f6;
+ }
+ 
+ .box{
+    width: 520px;
+    margin: 100px auto;
+    background: rgb(255, 255, 255);
+    border-radius: 7px;
+    box-shadow: 2px 4px 6px rgba(0,0,0,.3);
+ }
+ .first :hover{color: #92E3A9;
+    font-size: 20px;
+    
+    
+ }
+ 
+ .box .heading{
+    background: #198754;
+    border-radius: 7px 7px 0px 0px;
+    padding: 15px;
+    color: rgb(253, 251, 251);
+    text-align: center;
+    font-family: "Rubik";
+    font-size: 25px;
+ }
+ 
+ .faqs{
+    padding: 0px 20px 20px;
+ }
+ 
+ ::-webkit-details-marker{
+    float: right;
+    margin-top: 3px;
+ }
+ 
+ details{
+    background: #f6f6f6;
+    padding: 10px 30px;
+    border-radius: 7px;
+    margin-top: 10px;
+    font-family: "Rubik";
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+ }
+ 
+ details summary{
+    outline: none;
+}
+.btn{
+   padding: 5px; 
+   margin-left: 455px; 
+   margin-bottom: 10px;
+
+}

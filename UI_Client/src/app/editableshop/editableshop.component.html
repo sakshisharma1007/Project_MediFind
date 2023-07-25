@@ -1,0 +1,171 @@
+<h3>The shops whose services are available are listed below:-</h3>
+<div class="container">
+    <table>
+        <thead>
+          <tr>
+            <th>Shop Name</th>
+            <th>Opening Time</th>
+            <th>Closing Time</th>
+            <th>Location</th>
+            
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let shop of shops">
+            <td>{{ shop.ShopName }}</td>
+            <td>{{ shop.OpeningTime }}</td>
+            <td>{{ shop.ClosingTime }}</td>
+            <td><a href="{{ shop.Location }}">Click here</a></td>
+            
+          </tr>
+          <tr >
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><a href="">Click here</a></td>
+            
+          </tr>
+          <tr >
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><a href="">Click here</a></td>
+            
+          </tr>
+        </tbody>
+      </table><br>
+      <div>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#storeModal">
+        <i class="fa fa-plus"></i> Add Store
+        </button>
+      </div>
+
+</div>
+
+
+
+<!-- Add Store Modal -->
+<div class="modal fade" id="storeModal" tabindex="-1" aria-labelledby="storeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="storeModalLabel">Add New Store</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="shop-name">Shop Name:</label>
+            <input type="text" class="form-control" id="shop-name">
+          </div>
+          <div class="form-group">
+            <label for="opening-time">Opening Time:</label>
+            <input type="time" class="form-control" id="opening-time">
+          </div>
+          <div class="form-group">
+            <label for="closing-time">Closing Time:</label>
+            <input type="time" class="form-control" id="closing-time">
+          </div>
+          <div class="form-group">
+            <label for="location">Location:</label>
+            <input type="text" class="form-control" id="location">
+          </div>
+        </form>
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br><br>
+<h3>The medicines available are listed below:-</h3>
+<div class="container">
+  <table>
+      <thead>
+        <tr>
+          <th>Shop Name</th>
+          <th>Medicine Name</th>
+          <th>Price(in Rs.)</th>
+          <th>Action</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr  >
+          <td></td>
+          <td><ul><li></li></ul></td>
+          <td><ul><li></li></ul></td>
+          <td>
+            <div class="button-container">
+              <button class="edit-btn" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fa fa-edit"></i></button>
+              <button class="delete-btn"><i class="fa fa-trash"></i></button>
+            </div>
+            
+          </td>
+          
+          
+        </tr>
+        <tr >
+          <td></td>
+          <td><ul><li></li></ul></td>
+          <td><ul><li></li></ul></td>
+          <td>
+            <div class="button-container">
+              <button class="edit-btn" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fa fa-edit"></i></button>
+              <button class="delete-btn"><i class="fa fa-trash"></i></button>
+            </div>
+          </td>
+          
+        </tr>
+        <tr >
+          <td></td>
+          <td><ul><li></li></ul></td>
+          <td><ul><li></li></ul></td>
+          <td>
+            <div class="button-container">
+              <button class="edit-btn"data-bs-toggle="modal" data-bs-target="#editModal" ><i class="fa fa-edit"></i></button>
+              <button class="delete-btn"><i class="fa fa-trash"></i></button>
+            </div>
+          </td>
+          
+        </tr>
+      </tbody>
+    </table>
+
+</div><br><br>
+
+<!-- Edit store details-->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Edit Store Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="medicine-name">Medicine Name</label>
+            <input type="text" class="form-control" id="medicine-name" multiple>
+          </div>
+          <div class="form-group">
+            <label for="price-details">Price(in Rs.)</label>
+            <input type="number" class="form-control" id="price-details" multiple>
+          </div>
+        </form>
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

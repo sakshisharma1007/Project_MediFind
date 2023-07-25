@@ -1,0 +1,49 @@
+<div class="contact-page">
+    <div class="left-section">
+      <h3>Contact Us</h3>
+      <p>Need to get in touch with us?Fill out this form and we will contact you back with the best possible solution.</p>
+      <img class="image1" src="assets/images/Contact.png" height="500" width="550" alt="contactImage">
+    </div>
+
+    <div class="right-section">
+      <form [formGroup]="contactForm" (ngSubmit)="contact()">
+        <div class="form-group">
+          <label for="name"><b>Name:<span>*</span></b></label>
+          <input id="name" type="text" placeholder="Enter your name" formControlName="name" class="form-control"  required>
+          <div *ngIf="contactForm.get('name')?.invalid && (contactForm.get('name')?.dirty || contactForm.get('name')?.touched)">
+            <div  class="err_mess" *ngIf="contactForm.get('name')?.hasError('required')">Name is required.</div>
+          </div>
+        </div>
+  
+
+      <div class="form-group">
+        <label for="email"><b>Email:<span>*</span></b></label>
+        <input type="email" id="email" formControlName="email" placeholder="Enter your email" required>
+        <div *ngIf="contactForm.get('email')?.invalid && (contactForm.get('email')?.dirty || contactForm.get('email')?.touched)">
+          <div  class="err_mess" *ngIf="contactForm.get('email')?.hasError('required')">Email is required.</div>
+          <div  class="err_mess" *ngIf="contactForm.get('email')?.hasError('email')">Invalid Email format.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="message"><b>What can we help you with?<span>*</span></b></label>
+        <textarea class="textarea" id="message" formControlName="message" placeholder="Write your message here.." required></textarea>
+        <div *ngIf="contactForm.get('message')?.invalid && (contactForm.get('message')?.dirty || contactForm.get('message')?.touched)">
+          <div  class="err_mess" *ngIf="contactForm.get('message')?.hasError('required')">This is mandatory file.</div>
+        </div>
+
+      </div>
+        
+        <div class="form-group">
+          <label for="picture">You can add your prescription here so that our shopkeepers can give details about the medicines:</label>
+          <input type="file" id="picture" name="picture" accept="image/jpeg, image/jpg, image/png"
+            (change)="onFileSelected($event)" formControlName="picture" >
+          <div *ngIf="isProfilePictureInvalid" class="validation-message">
+            Only JPEG, JPG, and PNG file types are allowed.
+          </div>
+        </div>
+        
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,49 @@
+h3{
+    text-align: center;
+    text-emphasis: bold;
+    color: crimson;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+thead {
+    background-color: #f2f2f2;
+}
+  
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+  
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+  
+tr:hover {
+    background-color: #e9e9e9;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px; /* Adjust this value to increase or decrease spacing between the buttons */
+  }
+  
+  .edit-btn {
+    background-color: #198754;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  .delete-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  

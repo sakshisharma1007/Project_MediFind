@@ -1,0 +1,100 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light  sticky-top">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+    <span class="navbar-toggler-icon"></span>
+    </button>
+  
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- Navbar brand -->
+      <a class="navbar-brand" routerLink="home"><img src="assets/images/Logo.png" width="170" height="50"></a>
+    
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a routerLink="home" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="about">About</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="editableshop">Stores</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="faq">FAQ</a>
+        </li>
+      </ul>
+      <!-- Left links -->
+    </div>
+
+    <!-- Right elements -->
+    <div class="d-flex align-items-center">
+      <button class=" btn btn-danger signout-link" (click)="logout()">Sign Out</button>
+    </div>
+  </div>
+    <!-- Right elements -->
+  
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+
+
+<div class="main">
+  <router-outlet></router-outlet>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+   <div class="row">
+      <div class="footer-col">
+          <h4>Medicine Finder</h4><br>
+          <img src="assets/images/Logo.png" height="50" width="170">
+          <p style="color: white"><b>Available 24/7.</b></p>
+          <p style="color: white"><i class="fa fa-phone"></i><b>: 1234 1234 567</b></p>
+        </div>
+     <div class="footer-col">
+       <h4>Quick Links</h4>
+       <ul>
+         <li><a href="/user-website/home">Home</a></li>
+         <li><a href="/user-website/about">About Us</a></li>
+         <li><a href="/user-website/shop">Shops</a></li>
+         <li><a href="/user-website/contact">Contact Us</a></li>
+       </ul>
+     </div>
+     <div class="footer-col">
+       <h4>Get help</h4>
+       <ul>
+         <li><a href="/user-website/faq">FAQ</a></li>
+         <li><a href="/user-website/contact">Contact Us</a></li>
+       </ul>
+     </div>
+     <div class="footer-col">
+       <h4>Follow us</h4>
+       <div class="social-links">
+         <a href="#"><i class="fa fa-facebook-f"></i></a>
+         <a href="#"><i class="fa fa-twitter"></i></a>
+         <a href="#"><i class="fa fa-instagram"></i></a>
+       </div>
+     </div>
+   </div>
+  </div>
+ 
+</footer>
+
+
