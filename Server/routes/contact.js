@@ -1,4 +1,4 @@
-// routes/signupRoutes.js
+
 const express = require('express');
 const router = express.Router();
 const contactDetails = require('../models/contact');
@@ -41,7 +41,7 @@ router.post('/',upload.single('picture'), (req, res) => {
   const { name, email, message} = req.body;
   const picture = req.file ? req.file.path : '';
 
-  // Validate the incoming data here if needed
+  
 
   const contact = new contactDetails({
     name,
