@@ -92,7 +92,9 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const fileUpload = require('express-fileupload');
+const shopsRoutes = require('./routes/shops');
+const medicineRoutes = require('./routes/medicines');
+//const fileUpload = require('express-fileupload');
 // const multer = require('multer');
 // const upload = multer({ dest: 'uploads/' });
 
@@ -113,11 +115,11 @@ mongoose.connection.on('connected', () => {
   console.log('Connected to MongoDB');
 });
 
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ limit: '10mb', extended: false }));
+//app.use(express.json({ limit: '10mb' }));
+//app.use(express.urlencoded({ limit: '10mb', extended: false }));
 
 // Express middleware for file uploads
-app.use(fileUpload());
+//app.use(fileUpload());
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -140,6 +142,9 @@ app.use('/api/signup', signup);
  const contact = require('./routes/contact');
 app.use('/api/contact', contact);
 
+app.use('/api/shops', shopsRoutes);
+app.use('/api/medicines', medicineRoutes);
+
 app.listen(5000,function check(error)
 {
   if(error){
@@ -150,12 +155,5 @@ app.listen(5000,function check(error)
   }
 
 });
-
-
-
-
-
-
-
 
 

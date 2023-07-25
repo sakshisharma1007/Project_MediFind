@@ -1,24 +1,24 @@
 const mongoose = require('mongoose');
 
-const contactSchema = new mongoose.Schema({
-  name: {
+const shopSchema = new mongoose.Schema({
+  ShopName: {
     type: String,
     required: true
   },
-  email: {
+  OpeningTime: {
     type: String,
     required: true
   },
-  message: {
+  ClosingTime: {
     type: String,
     required: true
   },
-  picture: {
+  Location: {
     type: String
     
   }
 });
 
-const contactDetails = mongoose.model('contactDetails', contactSchema);
+const shops = mongoose.model('shops', shopSchema);
 
-module.exports = contactDetails;
+module.exports = shops;

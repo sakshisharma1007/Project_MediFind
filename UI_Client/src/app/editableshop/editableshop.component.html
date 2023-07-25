@@ -18,20 +18,7 @@
             <td><a href="{{ shop.Location }}">Click here</a></td>
             
           </tr>
-          <tr >
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><a href="">Click here</a></td>
-            
-          </tr>
-          <tr >
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><a href="">Click here</a></td>
-            
-          </tr>
+        
         </tbody>
       </table><br>
       <div>
@@ -93,49 +80,32 @@
           <th>Price(in Rs.)</th>
           <th>Action</th>
           
+          
         </tr>
       </thead>
       <tbody>
-        <tr  >
-          <td></td>
-          <td><ul><li></li></ul></td>
-          <td><ul><li></li></ul></td>
-          <td>
-            <div class="button-container">
-              <button class="edit-btn" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fa fa-edit"></i></button>
-              <button class="delete-btn"><i class="fa fa-trash"></i></button>
-            </div>
+        
+          <tr *ngFor="let medicine of medicines">
+            <td>{{ medicine.ShopName }}</td>
+            <td>{{ medicine.MedicineName }}</td>
+            <td>{{ medicine.Price }}</td>
+            <td>
+              <div class="button-container">
+                <button class="edit-btn" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fa fa-edit"></i></button>
+                <button class="delete-btn"><i class="fa fa-trash"></i></button>
+              </div>
+
+            </td>
+          
+          
             
-          </td>
-          
-          
-        </tr>
-        <tr >
-          <td></td>
-          <td><ul><li></li></ul></td>
-          <td><ul><li></li></ul></td>
-          <td>
-            <div class="button-container">
-              <button class="edit-btn" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fa fa-edit"></i></button>
-              <button class="delete-btn"><i class="fa fa-trash"></i></button>
-            </div>
-          </td>
-          
-        </tr>
-        <tr >
-          <td></td>
-          <td><ul><li></li></ul></td>
-          <td><ul><li></li></ul></td>
-          <td>
-            <div class="button-container">
-              <button class="edit-btn"data-bs-toggle="modal" data-bs-target="#editModal" ><i class="fa fa-edit"></i></button>
-              <button class="delete-btn"><i class="fa fa-trash"></i></button>
-            </div>
-          </td>
-          
-        </tr>
+          </tr>
+       
+      
+     
       </tbody>
     </table>
+ 
 
 </div><br><br>
 

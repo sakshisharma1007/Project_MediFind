@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class ContactComponent {
   contactForm: FormGroup ;
   selectedFile: string | null = null;
-  picture: any;
+  
   constructor(private formBuilder: FormBuilder,private http: HttpClient){
     this.contactForm = this.formBuilder.group({
       name: ['', Validators.required], // field with required validation
@@ -38,10 +38,10 @@ export class ContactComponent {
   contact(){
     if (this.contactForm && this.contactForm.valid) {
       
-      console.log('name:', this.name);
-      console.log('email:', this.email);
-      console.log('message:', this.message);
-      console.log('picture:', this.picture);
+      // console.log('name:', this.name);
+      // console.log('email:', this.email);
+      // console.log('message:', this.message);
+      // console.log('picture:', this.selectedFile);
 
       const dataObj ={
         name:this.contactForm.value.name,
@@ -56,10 +56,8 @@ export class ContactComponent {
         (response) => {
 
             console.log(response);
-
-            
-
             this.contactForm.reset();
+            this.selectedFile = null;
 
           },
           (error) => {
@@ -80,7 +78,16 @@ export class ContactComponent {
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-  
+    // if (file && allowedFileTypes.includes(file.type)) {
+    //   this.selectedFile = URL.createObjectURL(file); // Set the selectedFile as the file URL
+    // } else {
+    //   // File type is not supported
+    //   this.selectedFile = null;
+    //   this.contactForm.patchValue({ picture: '' }); // Reset the file input in the form
+    //   this.contactForm.get('picture')?.setErrors({ invalidFileType: true });
+    // }
+ 
+    
     if (file && allowedFileTypes.includes(file.type)) {
       const reader = new FileReader();
       reader.readAsDataURL(file); // Read the file as a Data URL

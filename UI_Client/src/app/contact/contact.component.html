@@ -35,7 +35,7 @@
         
         <div class="form-group">
           <label for="picture">You can add your prescription here so that our shopkeepers can give details about the medicines:</label>
-          <input type="file" id="picture" name="picture" accept="image/jpeg, image/jpg, image/png"
+          <input type="file" id="picture"  accept="image/jpeg, image/jpg, image/png" class="form-control"
             (change)="onFileSelected($event)" formControlName="picture" >
           <div *ngIf="isProfilePictureInvalid" class="validation-message">
             Only JPEG, JPG, and PNG file types are allowed.
