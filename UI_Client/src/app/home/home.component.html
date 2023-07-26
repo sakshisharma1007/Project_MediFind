@@ -1,150 +1,97 @@
-<div class="bg-image d-flex justify-content-center align-items-center image">
-    <div class="container">
-        <div class="mb-3 display-5  mb-4 font-weight-bold text-center">Your Trusted Companion in Medicine Exploration</div><br>
-      
-    </div>
-  </div>
-  <div class="container mt-5">
-    <div class="row m-2">
-        <div class="col-6 col-sm-6 p-2 ">
-            <h2> Unlocking Medicine Information at Your Fingertips</h2>
-       
-            <h2>Simplify Your Medicine Search with Medicine Finder</h2>
-        </div>
-    </div>
-  
-</div>
-
-<br><br>
-<div class="container mt-5">
-    <div class="text-center mb-4">
-        <h1>Ready to take a free trial?</h1>
-    </div>
-    <div class="font-weight-light mb-4 text-center">
-        <h2 class="font-weight-light"> You can login to search for the medicine available on the nearby shops.
-        </h2>
-    </div>
-    <div class=" mt-5 text-center">
-        <h1 class="display-6">Subscribe for free</h1>
-    </div>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light  sticky-top">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+      <!-- Toggle button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+      <span class="navbar-toggler-icon"></span>
+      </button>
     
-</div>
-<br>
-<div class="container mt-5 pt-3">
-    <div class="row m-4 pt-3">
-        <div class="col mb-3 me-3 ms-3">
-            <img src="https://st.depositphotos.com/1052036/2839/v/450/depositphotos_28390633-stock-illustration-bottle-pouring-medicine-syrup-in.jpg" class="img-fluid">
-        </div>
-        <div class="col mb-3 me-3 ms-3">
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#"> Description</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/user-website/about">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/user-website/contact">Contact Us</a>
-                </li>
-            </ul>
-            <div>
-                Welcome to Medicine Finder, your comprehensive portal for accessing information about medicines available at local shops. Our platform connects you with a vast database of medications, making it easy to find the specific medicine you need in your area. 
-                With detailed information on dosages, side effects, and precautions, we provide you with the knowledge to make informed decisions about your healthcare. Whether you're searching for a specific brand or a generic alternative, Medicine Finder ensures that you have access to a wide range of medicines right at your fingertips. 
-                Say goodbye to long searches and uncertainty—discover the convenience and reliability of Medicine Finder today.
-             
-            </div>
-        </div>
+  
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <!-- Navbar brand -->
+        <a class="navbar-brand" routerLink="index"><img src="assets/images/Logo.png" width="170" height="50"></a>
+      
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a routerLink="index" routerLinkActive="active">Home</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="about">About</a>
+          </li>
+        
+          <li class="nav-item">
+            <a routerLink="faq">FAQ</a>
+          </li>
+        </ul>
+        <!-- Left links -->
+      </div>
+  
+      <!-- Right elements -->
+      <div class="d-flex align-items-center">
+        <button class="btn signin-link" (click)="logout()">Sign In</button>
+        <button class=" btn btn-outline-danger signout-link button-spacing" (click)="login()">Sign Up</button>
+      </div>
     </div>
-</div>
-<br>
+      <!-- Right elements -->
+    
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->
 
-
-<div class="container mt-5 pt-3">
-    <div class="row m-4 pt-3">
-        <div class="col mb-3 me-3 ms-3">
-            <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            <b>Feature #1</b>
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                        data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            One of the key features of Medicine Finder is its extensive medication database. 
-                            We have compiled a comprehensive collection of medicines available at local shops, ensuring that you can find information on a wide range of medications all in one place. 
-                            Our database is regularly updated to provide you with the most accurate and up-to-date information.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            <b>Feature #2</b>
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                        data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            With Medicine Finder, you can easily search for a specific medication by its name or browse through various categories to explore different types of medicines. 
-                            Each medication entry provides detailed information such as dosage instructions, potential side effects, precautions, and any additional relevant information.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            <b>Feature #3</b>
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse " aria-labelledby="headingThree"
-                        data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            Our commitment to maintaining a robust medication database enables you to access vital details about the medicines you require, empowering you to make informed decisions about your health and well-being. 
-                            Whether you are a healthcare professional, a caregiver, or an individual seeking specific medications, our extensive database is here to assist you in finding the right information you need.
-                          
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col mb-3 me-3 ms-3">
-            <img src="https://kalingatv.com/wp-content/uploads/2019/12/cough-syrup-750x430.jpg" class="img-fluid" alt="medicine Image">
-        </div>
+  <div class="main">
+    <router-outlet></router-outlet>
+  
+  </div>
+  <br>
+  <br>
+<footer class="footer">
+    <div class="container">
+     <div class="row">
+        <div class="footer-col">
+            <h4>Medicine Finder</h4><br>
+            <img src="assets/images/Logo.png" height="50" width="170">
+            <p style="color: white"><b>Available 24/7.</b></p>
+            <p style="color: white"><i class="fa fa-phone"></i><b>: 1234 1234 567</b></p>
+          </div>
+       <div class="footer-col">
+         <h4>Quick Links</h4>
+         <ul>
+           <li><a href="/user-website/home">Home</a></li>
+           <li><a href="/user-website/about">About Us</a></li>
+           <li><a href="/user-website/shop">Shops</a></li>
+           <li><a href="/user-website/contact">Contact Us</a></li>
+         </ul>
+       </div>
+       <div class="footer-col">
+         <h4>Get help</h4>
+         <ul>
+           <li><a href="/user-website/faq">FAQ</a></li>
+           <li><a href="/user-website/contact">Contact Us</a></li>
+         </ul>
+       </div>
+       <div class="footer-col">
+         <h4>Follow us</h4>
+         <div class="social-links">
+           <a href="https://www.linkedin.com/in/sakshi-sharma-260b29220"><i class="fa fa-facebook-f"></i></a>
+           <a href="https://www.linkedin.com/in/sakshi-sharma-260b29220"><i class="fa fa-linkedin"></i></a>
+           <a href="https://www.linkedin.com/in/sakshi-sharma-260b29220"><i class="fa fa-instagram"></i></a>
+         </div>
+       </div>
+     </div>
     </div>
-</div>
-
-
-<br>
-<div class="container mt-5 pt-3">
-    <div class="font-monospace font-weight-light mb-4 text-center">
-        <h2 class="font-weight-light">Discover the power of knowledge and accessibility with Medicine Finder, your ultimate resource for finding and exploring medicines available at local shops.
-        </h2>
-    </div>
-</div>
-<br>
-<div class="container mt-5 pt-3 mb-5 pb-3">
-    <div class="font-monospace text-center mb-4 ">
-        <h1 class="display-4">You're at Right Place!</h1>
-    </div>
-    <div class="font-monospace mb-4 text-center">
-        <h2 class="font-weight-light">Connecting You to Local Medicine Resources.
-        </h2>
-    </div>
-    <div>
    
-        <div >
-            <div >
-                <h5><b>Let's Explore the Shops with Medicines</b></h5>
-                <p>Many Shops many medicines.</p>
-                <p>Dive into the world of medicines.</p>
-                <button class="btn btn-danger btn_started" type="submit" (click)=navigateToShop()>Get Started</button>
-            </div>
-          
-        </div>
-</div>
+</footer>
+  
+  
 

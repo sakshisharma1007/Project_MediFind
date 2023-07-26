@@ -1,0 +1,20 @@
+<h4>The medicines available in the  shops are as follows:</h4>
+
+<div class="container">
+    <a class="card2" *ngFor="let medicine of medicines ,index as i">
+      <h3>Shop No.{{i+1}}</h3>
+      <p class="small" >
+        <b>ShopName:</b>{{ medicine.ShopName }}<br>
+        <b>Medicines:</b>{{ medicine.MedicineName }}<br>
+        <b>Price(in Rs.):</b>{{ medicine.Price }}
+      </p>
+      
+      <div class="go-corner" >
+        <div class="go-arrow">
+          <a href="{{ medicine.Location }}">→</a>
+        </div>
+      </div>
+    </a>
+
+
+</div>

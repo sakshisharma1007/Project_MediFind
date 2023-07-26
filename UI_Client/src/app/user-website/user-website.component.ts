@@ -11,6 +11,10 @@ export class UserWebsiteComponent {
     // Redirect to the login page
     this.router.navigate(['/login']);
   }
+  login(): void {
+    // Redirect to the login page
+    this.router.navigate(['/signup']);
+  }
 
 
 }

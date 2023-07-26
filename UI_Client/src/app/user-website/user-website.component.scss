@@ -4,6 +4,8 @@
   background-color:#198754 ;
 
 }
+
+
 .navbar a{
   color: #e9ecef;
   text-decoration: none;   
@@ -14,6 +16,9 @@
 .navbar a:hover {
   color: white;
 }
+.button-spacing {
+  margin-left: 10px;
+}
 
 
 @media screen and (max-height: 450px) {
@@ -22,12 +27,18 @@
 }
 .navbar .signout-link{
   bottom: 10px;
+  color: white;
+}
+.navbar .signin-link{
+  bottom: 10px;
+  padding-right:10px;
+  color: white;
 }
 
 .footer{
 background-color: #198754;
 padding: 70px 0;
-margin-bottom: 0%;
+//margin-bottom: 0%;
 }
 
 .footer-col{

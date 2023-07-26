@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -8,9 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./faq.component.scss']
 })
 export class FaqComponent {
-  constructor(private router: Router) {}
-  goBack(): void {
-    this.router.navigate(['/user-website/contact']);
-  }
+  constructor() {}
+
 
 }

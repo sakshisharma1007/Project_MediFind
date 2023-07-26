@@ -21,8 +21,11 @@ import { MatBadgeModule } from '@angular/material/badge';
 import {MatCardModule} from '@angular/material/card';
 import { FaqComponent } from './faq/faq.component';
 import { HttpClientModule } from '@angular/common/http';
-import { WebsiteComponent } from './website/website.component';
+
 import { EditableshopComponent } from './editableshop/editableshop.component';
+import { IndexComponent } from './index/index.component';
+import { MedDetailsComponent } from './med-details/med-details.component';
+import { UserIndexComponent } from './user-index/user-index.component';
 
 
 
@@ -40,8 +43,10 @@ import { EditableshopComponent } from './editableshop/editableshop.component';
     ContactComponent,
     ShopComponent,
     FaqComponent,
-    WebsiteComponent,
     EditableshopComponent,
+    IndexComponent,
+    MedDetailsComponent,
+    UserIndexComponent,
     
     
   ],

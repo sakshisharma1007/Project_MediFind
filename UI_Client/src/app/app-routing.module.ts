@@ -11,45 +11,42 @@ import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { ShopComponent } from './shop/shop.component';
 import { FaqComponent } from './faq/faq.component';
-import { WebsiteComponent } from './website/website.component';
+
 import { EditableshopComponent } from './editableshop/editableshop.component';
+import { IndexComponent } from './index/index.component';
+import { MedDetailsComponent } from './med-details/med-details.component';
+import { UserIndexComponent } from './user-index/user-index.component';
 
 
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/home/index', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  {
-    path: 'user-website',
-    component: UserWebsiteComponent,
-    children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent},
-      { path: 'about', component: AboutComponent },
-      { path: 'contact', component: ContactComponent },
-      { path: 'editableshop', component: EditableshopComponent },
-      { path: 'faq', component: FaqComponent }
-    ],
-  },
-  { path: 'website', 
-    component: WebsiteComponent,
-    children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent},
-      { path: 'about', component: AboutComponent },
-      { path: 'contact', component: ContactComponent },
-      { path: 'editableshop', component: EditableshopComponent },
-      { path: 'faq', component: FaqComponent }
+  { path: 'home', component: HomeComponent,
+  children:[
+    { path: 'index', component:IndexComponent},
+    { path: 'about', component: AboutComponent },
+    { path: 'faq', component: FaqComponent },
+    { path: 'med', component:MedDetailsComponent}
 
-    ]
-
-  },
-
-  { path: 'user-website', component: UserWebsiteComponent },
+  ]},
+  { path: 'about', component: AboutComponent },
+  { path: 'contact', component: ContactComponent },
   { path: 'policy', component: PolicyComponent },
-];
+  { path: 'editableshop', component: EditableshopComponent },
+  { path: 'faq', component: FaqComponent },
+  { path: 'user-index', component:UserIndexComponent,
+    children:[
+      { path: 'med', component:MedDetailsComponent}
+
+    ] }
+  ]
+  
+
+
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

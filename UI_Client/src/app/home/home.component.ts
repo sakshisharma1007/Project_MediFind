@@ -9,8 +9,17 @@ import { Router } from '@angular/router';
 export class HomeComponent {
   constructor(private router: Router) {}
 
-  navigateToShop(): void {
-    this.router.navigate(['/user-website/shop']);
+  // navigateToShop(): void {
+  //   this.router.navigate(['/user-website/shop']);
+  // }
+  logout(): void {
+    // Redirect to the login page
+    this.router.navigate(['/login']);
   }
+  login(): void {
+    // Redirect to the login page
+    this.router.navigate(['/signup']);
+  }
+
 
 }
