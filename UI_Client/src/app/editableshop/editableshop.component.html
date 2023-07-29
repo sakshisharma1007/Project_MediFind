@@ -4,9 +4,13 @@
         <thead>
           <tr>
             <th>Shop Name</th>
-            <th>Opening Time</th>
-            <th>Closing Time</th>
+            <th>Opening Time(A.M)</th>
+            <th>Closing Time(P.M)</th>
             <th>Location</th>
+            <!-- changes done from here -->
+            <th>Medicine Name</th>
+            <th>Price(in Rs.)</th>
+            <th>Action</th>
             
           </tr>
         </thead>
@@ -16,6 +20,16 @@
             <td>{{ shop.OpeningTime }}</td>
             <td>{{ shop.ClosingTime }}</td>
             <td><a href="{{ shop.Location }}">Click here</a></td>
+            <td>{{shop.MedicineName}}</td>
+            <td>{{shop.Price}}</td>
+            <td>
+              <div class="button-container">
+                <button class="edit-btn" data-bs-toggle="modal" data-bs-target="#editModal" (click)="onEdit(shop)"><i class="fa fa-edit"></i></button>
+                <button class="delete-btn" ><i class="fa fa-trash"></i></button>
+              </div>
+
+            </td>
+
             
           </tr>
         
@@ -41,73 +55,43 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form [formGroup]="addForm" (ngSubmit)="add()">
           <div class="form-group">
-            <label for="shop-name">Shop Name:</label>
-            <input type="text" class="form-control" id="shop-name">
+            <label for="ShopName">Shop Name:</label>
+            <input type="text" class="form-control" formControlName="ShopName" id="ShopName">
           </div>
           <div class="form-group">
-            <label for="opening-time">Opening Time:</label>
-            <input type="time" class="form-control" id="opening-time">
+            <label for="OpeningTime">Opening Time:</label>
+            <input type="time" class="form-control" formControlName="OpeningTime" id="OpeningTime">
           </div>
           <div class="form-group">
-            <label for="closing-time">Closing Time:</label>
-            <input type="time" class="form-control" id="closing-time">
+            <label for="ClosingTime">Closing Time:</label>
+            <input type="time" class="form-control" formControlName="ClosingTime" id="ClosingTime">
           </div>
           <div class="form-group">
-            <label for="location">Location:</label>
-            <input type="text" class="form-control" id="location">
+            <label for="Location">Location:</label>
+            <input type="text" class="form-control" formControlName="Location" id="Location">
+          </div>
+          <div class="form-group">
+            <label for="MedicineName">Medicine Name:</label>
+            <input type="text" class="form-control" id="MedicineName" formControlName="MedicineName">
+          </div>
+          <div class="form-group">
+            <label for="Price">Price(in Rs.):</label>
+            <input type="number" class="form-control" id="Price" formControlName="Price">
           </div>
         </form>
       
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success">Add</button>
+        <button type="button" class="btn btn-success" (click)="click()">Add</button>
       </div>
     </div>
   </div>
 </div>
 
-<br><br>
-<h3>The medicines available are listed below:-</h3>
-<div class="container">
-  <table>
-      <thead>
-        <tr>
-          <th>Shop Name</th>
-          <th>Medicine Name</th>
-          <th>Price(in Rs.)</th>
-          <th>Action</th>
-          
-          
-        </tr>
-      </thead>
-      <tbody>
-        
-          <tr *ngFor="let medicine of medicines">
-            <td>{{ medicine.ShopName }}</td>
-            <td>{{ medicine.MedicineName }}</td>
-            <td>{{ medicine.Price }}</td>
-            <td>
-              <div class="button-container">
-                <button class="edit-btn" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fa fa-edit"></i></button>
-                <button class="delete-btn"><i class="fa fa-trash"></i></button>
-              </div>
 
-            </td>
-          
-          
-            
-          </tr>
-       
-      
-     
-      </tbody>
-    </table>
- 
-
-</div><br><br>
 
 <!-- Edit store details-->
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
@@ -118,24 +102,24 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form [formGroup]="editForm">
+          
           <div class="form-group">
-            <label for="medicine-name">Medicine Name</label>
-            <input type="text" class="form-control" id="medicine-name" multiple>
+            <label for="MedicineName">Medicine Name</label>
+            <input type="text" class="form-control" formControlName="MedicineName" id="MedicineName" multiple>
           </div>
           <div class="form-group">
-            <label for="price-details">Price(in Rs.)</label>
-            <input type="number" class="form-control" id="price-details" multiple>
+            <label for="Price">Price(in Rs.)</label>
+            <input type="number" class="form-control" formControlName="Price" id="Price" multiple>
           </div>
+        
         </form>
       
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success">Add</button>
+        <button type="button" class="btn btn-success" (click)="editDetails()">Edit </button>
       </div>
     </div>
   </div>
 </div>
-
-

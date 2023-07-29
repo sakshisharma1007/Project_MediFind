@@ -29,6 +29,7 @@ const routes: Routes = [
     { path: 'faq', component: FaqComponent },
     { path: 'med', component:MedDetailsComponent},
     { path: 'contact', component: ContactComponent },
+    { path: 'editableshop', component: EditableshopComponent },
 
   ]},
   { path: 'about', component: AboutComponent },

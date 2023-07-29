@@ -16,45 +16,55 @@ export class LoginComponent {
   
  
   
-  constructor(private router: Router,private formBuilder: FormBuilder){
+  constructor(private router: Router,private formBuilder: FormBuilder,private http: HttpClient){
         // Initialize the form group and form controls
         this.loginForm = this.formBuilder.group({
-          uname: ['', Validators.required], // Username field with required validation
+          usname: ['', Validators.required], // Username field with required validation
           psw: ['', Validators.required],   // Password field with required validation
-          userType: ['', Validators.required] // User type field with required validation
         });
   }
 
   login() {
     if (this.loginForm.valid) {
-      const username = this.loginForm.get('uname')?.value;
+      const username = this.loginForm.get('usname')?.value;
       const password = this.loginForm.get('psw')?.value;
-      const userType = this.loginForm.get('userType')?.value;
+     // const userType = this.loginForm.get('userType')?.value;
   
       console.log('Username:', username);
       console.log('Password:', password);
-      console.log('User Type:', userType);
-  
-      // Check if the login credentials match the expected values
-      if (username === 'Sakshi' && password === '1234' && userType === 'user') {
-        // Navigate to the 'user-website' component
-        this.router.navigate(['/user-website']);
-      } else {
-        console.log('Invalid credentials!')
- 
-        // Handle incorrect login credentials
-        // For example, show an error message
+
       
+
+    const data = {
+      usname: this.loginForm.value.usname,
+      psw: this.loginForm.value.psw,
+    };
+    this.http.post<any>('http://localhost:5000/api/login', data).subscribe(
+      (response) => {
+        if (response.success) {
+          // Assuming the server sends a success response if login is successful
+          // Redirect to the home page after successful login
+          this.router.navigate(['/home/index']);
+        } else {
+          // Handle login failure, show error message, etc.
+          console.log(response.msg);
+        }
+      },
+      (error) => {
+        console.log(error);
+        // Handle login failure, show error message, etc.
       }
-    }
-      
-    }
+    );
+  } else {
+    console.log('Invalid form');
   }
+}
 
 
 
-   
 
+}
+  
 
 
 

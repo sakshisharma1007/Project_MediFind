@@ -17,26 +17,11 @@
             <input type="password" placeholder="Enter Password" formControlName="psw" required>
             <div *ngIf="signForm.get('psw')?.invalid && (signForm.get('psw')?.dirty || signForm.get('psw')?.touched)">
               <div  class="err_mess" *ngIf="signForm.get('psw')?.hasError('required')">Password is required.</div>
+              <div class="err_mess" *ngIf="signForm.get('psw')?.hasError('invalidPasswordLength')">Password should be exactly 8 characters.</div>
             </div>
-            <div class="form-group">
-              <label for="repeat-psw"><b>Repeat Password<span>*</span></b></label>
-              <input
-                id="repeat-psw"
-                type="password"
-                placeholder="Repeat Password"
-                formControlName="repeatPsw"
-                class="form-control"
-                required
-              />
-              <div *ngIf="signForm.get('repeatPsw')?.invalid && (signForm.get('repeatPsw')?.dirty || signForm.get('repeatPsw')?.touched)">
-                <div class="err_mess" *ngIf="signForm.get('repeatPsw')?.hasError('required')">Repeat Password is required.</div>
-                <div class="err_mess" *ngIf="signForm.get('repeatPsw')?.hasError('mismatch')">Passwords do not match.</div>
-              </div>
-            </div>
-          </div>
-          <label>
-            <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-          </label>
+        
+          </div> 
+        
       
           <p>By creating an account you agree to our <a href="/policy" style="color:dodgerblue">Terms & Privacy</a>.</p>
           <p>Already have an account? <a href="/login" style="color:dodgerblue">Sign In</a>.</p>

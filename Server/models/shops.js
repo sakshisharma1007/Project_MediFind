@@ -14,7 +14,18 @@ const shopSchema = new mongoose.Schema({
     required: true
   },
   Location: {
-    type: String
+    type: String,
+    required: true
+    
+  },
+  MedicineName: {
+    type: String, 
+    required: true
+    
+  },
+  Price: {
+    type: Number,
+    required:true
     
   }
 });

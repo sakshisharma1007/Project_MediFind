@@ -9,11 +9,8 @@ const userSchema = new mongoose.Schema({
   psw: {
     type: String,
     required: true
-  },
-  repeatPsw: {
-    type: String,
-    required: true
   }
+ 
 });
 
 const User = mongoose.model('User', userSchema);

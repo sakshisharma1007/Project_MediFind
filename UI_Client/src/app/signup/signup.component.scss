@@ -109,3 +109,15 @@ button:hover {
   margin: 5px; /* Optional: Add margin for spacing between buttons */
   padding: 10px;
 }
+
+@media screen  and (max-width: 500px){
+  .images{
+    display: flex;
+    width: 50%;
+    padding: 30px;
+    justify-content: center;
+    height: 50vh;
+    align-items: center;
+    font-family: "Inter";
+  }
+}

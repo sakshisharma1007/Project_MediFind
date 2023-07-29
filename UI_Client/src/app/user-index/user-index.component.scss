@@ -112,19 +112,17 @@
   }
   }
   
-  .card-header, .card-body, .card-text, .card-footer{
-    text-align: center;
-  }
-  .card-text{
-    padding-top: 2%;
-    padding-bottom: 2%;
-  }
+//   .card-header, .card-body, .card-text, .card-footer{
+//     text-align: center;
+//   }
+//   .card-text{
+//     padding-top: 2%;
+//     padding-bottom: 2%;
+//   }
   
   
   
 body{
-    //line-height: 1.5;
-   //min-height: 100vh;
     display: flex;
     flex-direction: column;
   
