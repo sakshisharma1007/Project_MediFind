@@ -1,10 +1,9 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-//const bodyParser = require('body-parser');
 const cors = require('cors');
-//const shopsRoutes = require('./routes/shops');
-//const medicineRoutes = require('./routes/medicines');
+const shopsRoutes = require('./routes/shops');
+const medicineRoutes = require('./routes/medicines');
 //const addStore = require('./routes/shops');
 
 
@@ -49,9 +48,9 @@ app.use((req, res, next) => {
 //app.use('/api/contact', contact);
 
 //app.use('/api/', shopsRoutes);
-//app.use('/api/medicines', medicineRoutes);
+app.use('/api/medicines', medicineRoutes);
 //app.use('/api/shops', addStore);
-//app.use('/api/shops', shopsRoutes);
+app.use('/api/shops', shopsRoutes);
 
 // app.use(new shopRoutes().router)
 //app.use('/api',shopsRoutes)
@@ -64,6 +63,10 @@ app.use((req, res, next) => {
 const sign_routes = require('./routes/signup');
 app.use('/api',sign_routes);
 
+const contact_route = require("./routes/contact");
+app.use('/api',contact_route);
+const delete_route = require("./routes/shops");
+app.use('/api',delete_route);
 
 app.listen(5000,function check(error)
 {

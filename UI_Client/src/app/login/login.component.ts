@@ -28,7 +28,7 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const username = this.loginForm.get('usname')?.value;
       const password = this.loginForm.get('psw')?.value;
-     // const userType = this.loginForm.get('userType')?.value;
+     
   
       console.log('Username:', username);
       console.log('Password:', password);
@@ -42,7 +42,7 @@ export class LoginComponent {
     this.http.post<any>('http://localhost:5000/api/login', data).subscribe(
       (response) => {
         if (response.success) {
-          // Assuming the server sends a success response if login is successful
+        
           // Redirect to the home page after successful login
           this.router.navigate(['/home/index']);
         } else {
@@ -52,7 +52,7 @@ export class LoginComponent {
       },
       (error) => {
         console.log(error);
-        // Handle login failure, show error message, etc.
+      
       }
     );
   } else {

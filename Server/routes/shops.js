@@ -1,16 +1,12 @@
 const express = require("express");
 const router = express.Router();
+const mongoose = require("mongoose");
 const shops = require("../models/shops");
 
-/**
- * 
- * 
- */
+
 
 // GET route to fetch all shops from the database
-router.get("/", async (req, res) => getShopsRoutes(req, res)) ;
-
-getShopsRoutes = async (req, res) =>  {
+router.get("/", async (req, res) => {
   try {
     const Shop = await shops.find();
     res.json(Shop);
@@ -18,7 +14,7 @@ getShopsRoutes = async (req, res) =>  {
     console.error("Error fetching shops:", err);
     res.status(500).json({ error: "Error fetching shops" });
   }
-}
+});
 
 //  route to post the data
 router.post("/", (req, res) => {
@@ -43,30 +39,58 @@ router.post("/", (req, res) => {
       res.status(500).json({ error: "Error adding data." });
     });
 });
-
-router.patch("/update/:id", (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const shopID = req.params.id;
-    console.log(shopID);
+    console.log("Received shopID:", shopID);
+
+    // Check if shopID is a valid ObjectID
+    if (!mongoose.Types.ObjectId.isValid(shopID)) {
+      console.log("Invalid shop ID");
+      return res.status(400).json({ success: false, message: "Invalid shop ID" });
+    }
+
     const { MedicineName, Price } = req.body;
 
-    const shop = shops.findOne({ _id: shopID });
-
-    if (shop) {
-      shop.MedicineName = MedicineName;
-      shop.Price = Price;
-      const updatedShop = shops.save();
-
-      res.json({ msg: updatedShop });
-    } else {
-      return res.status(404).json({ msg: "Shop not found" });
+    // Add validation to check if MedicineName and Price are provided
+    if (!MedicineName || !Price) {
+      return res.status(400).json({ success: false, message: "MedicineName and Price are required" });
     }
-  } catch (err) {
-    console.log("Error:", err);
 
-    res.status(500).json({ error: "Internal Server Error" });
+
+    const updateData = {
+      MedicineName,
+      Price,
+    };
+
+    const updatedShop = await shops.findByIdAndUpdate(shopID, updateData, { new: true });
+
+    if (updatedShop) {
+      res.json({ success: true, message: "Shop updated successfully", shop: updatedShop });
+    } else {
+      res.json({ success: false, message: "Shop not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Error updating shop", error: error.message });
   }
 });
+
+
+
+router.delete('/delete/:id',(req,res)=>{
+  const shopID = req.params.id;
+  shops.findByIdAndDelete(shopID).then((deletedShop)=>{
+    if(deletedShop){
+      res.json({message:'Shop deleted successfully.'});
+    }else{
+      res.status(404).json({error:'Shop not found.'});
+    }
+  })
+  .catch((err)=>{
+    res.status(500).json({error:'Failed to delete the shop.'});
+  });
+});
+
 
 
 module.exports = router;

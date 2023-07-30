@@ -25,7 +25,7 @@
             <td>
               <div class="button-container">
                 <button class="edit-btn" data-bs-toggle="modal" data-bs-target="#editModal" (click)="onEdit(shop)"><i class="fa fa-edit"></i></button>
-                <button class="delete-btn" ><i class="fa fa-trash"></i></button>
+                <button class="delete-btn" (click)="deleteItem(shop._id)"><i class="fa fa-trash"></i></button>
               </div>
 
             </td>

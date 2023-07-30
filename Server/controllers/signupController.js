@@ -79,6 +79,7 @@ const login_user = async(req,res) =>{
                     data:userResult
                 }
                 res.status(200).send(response);
+                console.log(response);
 
 
             }else{

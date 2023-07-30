@@ -20,6 +20,6 @@ const contactSchema = new mongoose.Schema({
   }
 });
 
-const contactDetails = mongoose.model('contactDetails', contactSchema);
+const contactUser = mongoose.model('contactDetails', contactSchema);
 
-module.exports = contactDetails;
+module.exports = contactUser;

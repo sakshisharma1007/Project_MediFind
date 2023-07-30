@@ -22,6 +22,8 @@ export class EditableshopComponent implements OnInit {
   editForm!: FormGroup;
   shops: any[] = [];
   selectedShop: any;
+  
+  
 
   medicines: any[] = [];
   isModalOpen: boolean = false;
@@ -71,28 +73,36 @@ export class EditableshopComponent implements OnInit {
     });
   }
   editDetails() {
-    const updateEndpoint = ``;
+    const updateEndpoint = `http://localhost:5000/api/shops/${this.selectedShop._id}`;
+    if(this.selectedShop){
+      const updatePayload = {
+        MedicineName: this.editForm.value.MedicineName,
+        Price: this.editForm.value.Price,
+      };
+      this.http.put(updateEndpoint, updatePayload).subscribe(
 
-    const updatePayload = {
-      MedicineName: this.editForm.value.MedicineName,
-      Price: this.editForm.value.Price,
-    };
-    this.http.patch(updateEndpoint, updatePayload).subscribe(
+        (response) => {
+  
+          console.log('Details updated successfully.');
+          this.selectedShop.MedicineName = updatePayload.MedicineName;
+          this.selectedShop.Price = updatePayload.Price;
+          //this.fetchShops();
+          this.editForm.reset();
+  
+        },
+  
+        (error) => {
+           console.log('Error updating Shop:', error);
+  
+        }
+  
+      );
 
-      (response) => {
+    }
+    //const updateEndpoint = `http://localhost:5000/api/shops/${id}`;
 
-        console.log('Details updated successfully.');
-        this.fetchShops();
-        this.editForm.reset();
-
-      },
-
-      (error) => {
-         console.log('Error updating Shop:', error);
-
-      }
-
-    );
+    
+    
   }
 
   fetchShops(): void {
@@ -146,4 +156,22 @@ export class EditableshopComponent implements OnInit {
     console.log('Button clicked!');
     this.add();
   }
+
+    
+  deleteItem(id:string) {
+    console.log("delete button clicked!")
+    this.http.delete(`http://localhost:5000/api/delete/${id}`)
+    .subscribe(
+       () => {
+        console.log('shop deleted successfully');
+         // Refresh the data after deleting
+        this.fetchShops();
+        },
+        (error) => {
+        console.log('Error deleting item:', error);
+       }
+    );
+  }
+
+
 }
