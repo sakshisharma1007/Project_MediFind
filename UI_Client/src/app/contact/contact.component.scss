@@ -52,3 +52,18 @@ input[type=text], input[type=password], input[type=email], textarea {
   color: red;
 }
   
+@media (max-width: 768px) {
+  .contact-page {
+    flex-direction: column;
+  }
+
+  .left-section,
+  .right-section {
+    flex: 1;
+    padding: 30px;
+  }
+
+  form {
+    grid-template-columns: 1fr;
+  }
+}
