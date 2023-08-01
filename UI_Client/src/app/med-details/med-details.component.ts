@@ -7,21 +7,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./med-details.component.scss']
 })
 export class MedDetailsComponent implements OnInit{
-  medicines: any[] =[];
+  shops:any[] = [];
   constructor(private http: HttpClient,private router: Router){ }
-  
+
   signout(){
     this.router.navigate(['/login']);
   }
   ngOnInit(): void {
-    this.fetchMedicines();
-   
+      this.fetchShops();
   }
-  fetchMedicines(): void {
-    this.http.get<any[]>('http://localhost:5000/api/medicines')
-      .subscribe((medicines: any[]) => {
-        
-        this.medicines = medicines;
+  fetchShops(): void {
+    this.http
+      .get<any[]>('http://localhost:5000/api/shops')
+      .subscribe((shops: any[]) => {
+        this.shops = shops;
       });
   }
 }

@@ -6,6 +6,11 @@
 /out-tsc
 /bazel-out
 
+
+#env file
+/Server/.env
+
+
 # Node
 /Server/node_modules
 /UI_Client/node_modules

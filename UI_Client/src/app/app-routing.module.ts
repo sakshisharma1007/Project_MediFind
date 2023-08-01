@@ -7,12 +7,12 @@ import { PolicyComponent } from './policy/policy.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
-import { ShopComponent } from './shop/shop.component';
 import { FaqComponent } from './faq/faq.component';
 
 import { EditableshopComponent } from './editableshop/editableshop.component';
 import { IndexComponent } from './index/index.component';
 import { MedDetailsComponent } from './med-details/med-details.component';
+import { UserIndexComponent } from './user-index/user-index.component';
 
 
 
@@ -26,17 +26,23 @@ const routes: Routes = [
   children:[
     { path: 'index', component:IndexComponent},
     { path: 'about', component: AboutComponent },
-    { path: 'faq', component: FaqComponent },
-    { path: 'med', component:MedDetailsComponent},
-    { path: 'contact', component: ContactComponent },
-    { path: 'editableshop', component: EditableshopComponent },
-
   ]},
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'policy', component: PolicyComponent },
   { path: 'editableshop', component: EditableshopComponent },
-  { path: 'faq', component: FaqComponent }
+  { path: 'faq', component: FaqComponent },
+  { path: 'userIndex', component:UserIndexComponent,
+    children:[
+      { path: 'index', component:IndexComponent},
+      { path: 'about', component: AboutComponent },
+      { path: 'faq', component: FaqComponent },
+      { path: 'med', component:MedDetailsComponent},
+      { path: 'contact', component: ContactComponent },
+      { path: 'editableshop', component: EditableshopComponent },
+
+
+    ]}
   ]
   
 

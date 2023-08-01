@@ -9,15 +9,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ContactComponent {
   contactForm: FormGroup ;
-  //selectedFile: String | null = null;
-  isProfilePictureInvalid: boolean = false;
+  selectedFile: string | ArrayBuffer | null = null;
+  t = '';
+  //isProfilePictureInvalid: boolean = false;
   
   constructor(private formBuilder: FormBuilder,private http: HttpClient){
     this.contactForm = this.formBuilder.group({
       name: ['', Validators.required], // field with required validation
       email: ['', [Validators.required, Validators.email]], // field with required validation
       message: ['', Validators.required],
-      picture: ['',[Validators.required]]
+      picture: ['',Validators.required]
     });
   }
 
@@ -32,8 +33,8 @@ export class ContactComponent {
     return this.contactForm.get('message');
   }
   // get picture() {
-  //   return this.contactForm.get('picture');
-  //  }
+  //    return this.contactForm.get('picture');
+  // }
 
   //  get isProfilePictureInvalid(): boolean {
   //   const control = this.contactForm.get('picture');
@@ -51,7 +52,7 @@ export class ContactComponent {
         name:this.contactForm.value.name,
         email:this.contactForm.value.email,
         message:this.contactForm.value.message,
-        picture:this.contactForm.value.picture
+        picture:this.selectedFile
       };
       this.http.post("http://localhost:5000/api/contact/",
           dataObj
@@ -61,7 +62,7 @@ export class ContactComponent {
 
             console.log(response);
             this.contactForm.reset();
-            //this.selectedFile = null;
+            this.selectedFile = null;
 
           },
           (error) => {
@@ -79,21 +80,61 @@ export class ContactComponent {
 
 
   }
-  onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    //const file = inputElement.files?.[0]; // Use optional chaining to handle null
+  onFileUpload(event: any) {
+    const file = event.target.files[0];
 
-    // Validate the file type
-    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-    if (file && allowedTypes.includes(file.type)) {
-      this.contactForm.patchValue({ picture: file  }); // Explicitly cast file as File type
-      
-      this.isProfilePictureInvalid = false;
+    const allowedExtensions = ['.jpg', '.jpeg', '.png'];
+
+    const fileExtension = file.name
+      .substring(file.name.lastIndexOf('.'))
+      .toLowerCase();
+    if (!allowedExtensions.includes(fileExtension)) {
+      // for file extension
+      this.t =
+        'Invalid file extension. Please select a .jpg, .jpeg, or .png file.';
+      this.selectedFile = '';
+      return;
     } else {
-      this.contactForm.patchValue({ picture: null });
-      this.isProfilePictureInvalid = true;
+      this.t = '';
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        this.selectedFile = reader.result;
+        console.log('The image string is:', this.selectedFile);
+      };
+      reader.readAsDataURL(file);
     }
 
+  
+  }
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+
+    // Check if the selected file is a valid image (jpeg, jpg, png)
+    if (file && !file.type.match('image/jpeg|image/jpg|image/png')) {
+     // this.isProfilePictureInvalid = true;
+      return;
+    }
+
+    //this.isProfilePictureInvalid = false;
+    this.contactForm.get('picture')?.setValue(file); // Set the form control value to the selected file
+  }
+
+
+
+  // onFileSelected(event: any) {
+  //   const file: File = event.target.files[0];
+  //   //const file = inputElement.files?.[0]; // Use optional chaining to handle null
+
+  //   // Validate the file type
+  //   const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+  //   if (file && allowedTypes.includes(file.type)) {
+  //     this.contactForm.patchValue({ picture: file  }); // Explicitly cast file as File type
+      
+  //     this.isProfilePictureInvalid = false;
+  //   } else {
+  //     this.contactForm.patchValue({ picture: null });
+  //     this.isProfilePictureInvalid = true;
+  //   }
 
 
 
@@ -112,37 +153,38 @@ export class ContactComponent {
 
 
 
-    // const inputElement = event.target as HTMLInputElement;
-    // const file = inputElement?.files?.[0];
-    // this.contactForm.patchValue({ picture: file });
 
-    // if (file) {
-    //   // Validate the file type
-    //   const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-    //   if (!allowedTypes.includes(file.type)) {
-    //     this.contactForm.controls['picture'].setErrors({ invalidFileType: true });
-    //   } else {
-    //     this.contactForm.patchValue({ picture: file });
-    //   }
-    // }
+  //   // const inputElement = event.target as HTMLInputElement;
+  //   // const file = inputElement?.files?.[0];
+  //   // this.contactForm.patchValue({ picture: file });
+
+  //   // if (file) {
+  //   //   // Validate the file type
+  //   //   const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+  //   //   if (!allowedTypes.includes(file.type)) {
+  //   //     this.contactForm.controls['picture'].setErrors({ invalidFileType: true });
+  //   //   } else {
+  //   //     this.contactForm.patchValue({ picture: file });
+  //   //   }
+  //   // }
 
     
-      //   const reader = new FileReader();
-      //   reader.readAsDataURL(file); // Read the file as a Data URL
+  //     //   const reader = new FileReader();
+  //     //   reader.readAsDataURL(file); // Read the file as a Data URL
     
-      //   reader.onload = () => {
-      //     // When the file is loaded, the result will be a Base64-encoded string
-      //     const base64Image = reader.result as string;
-      //     this.selectedFile = base64Image; // Set the selectedFile as the Base64 image
+  //     //   reader.onload = () => {
+  //     //     // When the file is loaded, the result will be a Base64-encoded string
+  //     //     const base64Image = reader.result as string;
+  //     //     this.selectedFile = base64Image; // Set the selectedFile as the Base64 image
           
           
-      //   };
-      // } else {
-      //   // File type is not supported
-      //   this.selectedFile = null;
-      //   this.contactForm.patchValue({ picture: '' }); // Reset the file input in the form
-      //   this.contactForm.get('picture')?.setErrors({ invalidFileType: true });
-      // }
+  //     //   };
+  //     // } else {
+  //     //   // File type is not supported
+  //     //   this.selectedFile = null;
+  //     //   this.contactForm.patchValue({ picture: '' }); // Reset the file input in the form
+  //     //   this.contactForm.get('picture')?.setErrors({ invalidFileType: true });
+  //     // }
 
 
 
@@ -157,57 +199,57 @@ export class ContactComponent {
 
 
 
-    //latest file
-    // const file: File = event.target.files[0];
-    // const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+  //   //latest file
+  //   // const file: File = event.target.files[0];
+  //   // const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
 
-    // if (file && allowedFileTypes.includes(file.type)) {
-    //   this.contactForm.patchValue({ picture: file });
-    //   this.isProfilePictureInvalid = false;
-    // } else {
-    //   this.contactForm.patchValue({ picture: null });
-    //   this.isProfilePictureInvalid = true;
-    // }
+  //   // if (file && allowedFileTypes.includes(file.type)) {
+  //   //   this.contactForm.patchValue({ picture: file });
+  //   //   this.isProfilePictureInvalid = false;
+  //   // } else {
+  //   //   this.contactForm.patchValue({ picture: null });
+  //   //   this.isProfilePictureInvalid = true;
+  //   // }
 
 
 
-    // if (file && allowedFileTypes.includes(file.type)) {
-    //   this.selectedFile = URL.createObjectURL(file); // Set the selectedFile as the file URL
-    // } else {
-    //   // File type is not supported
-    //   this.selectedFile = null;
-    //   this.contactForm.patchValue({ picture: '' }); // Reset the file input in the form
-    //   this.contactForm.get('picture')?.setErrors({ invalidFileType: true });
-    // }
+  //   // if (file && allowedFileTypes.includes(file.type)) {
+  //   //   this.selectedFile = URL.createObjectURL(file); // Set the selectedFile as the file URL
+  //   // } else {
+  //   //   // File type is not supported
+  //   //   this.selectedFile = null;
+  //   //   this.contactForm.patchValue({ picture: '' }); // Reset the file input in the form
+  //   //   this.contactForm.get('picture')?.setErrors({ invalidFileType: true });
+  //   // }
  
     
-    // if (file && allowedFileTypes.includes(file.type)) {
-    //   const reader = new FileReader();
-    //   reader.readAsDataURL(file); // Read the file as a Data URL
+  //   // if (file && allowedFileTypes.includes(file.type)) {
+  //   //   const reader = new FileReader();
+  //   //   reader.readAsDataURL(file); // Read the file as a Data URL
   
-    //   reader.onload = () => {
-    //     // When the file is loaded, the result will be a Base64-encoded string
-    //     const base64Image = reader.result as string;
-    //     this.selectedFile = base64Image; // Set the selectedFile as the Base64 image
+  //   //   reader.onload = () => {
+  //   //     // When the file is loaded, the result will be a Base64-encoded string
+  //   //     const base64Image = reader.result as string;
+  //   //     this.selectedFile = base64Image; // Set the selectedFile as the Base64 image
         
         
-    //   };
-    // } else {
-    //   // File type is not supported
-    //   this.selectedFile = null;
-    //   this.contactForm.patchValue({ picture: '' }); // Reset the file input in the form
-    //   this.contactForm.get('picture')?.setErrors({ invalidFileType: true });
-    // }
-  }
-    // Custom validation for the file type
-    // validateFileType(control: AbstractControl): ValidationErrors | null {
-    //   const file = control.value as File;
-    //   if (file) {
-    //     const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-    //     if (!allowedTypes.includes(file.type)) {
-    //       return { invalidFileType: true };
-    //     }
-    //   }
-    //   return null;
+  //   //   };
+  //   // } else {
+  //   //   // File type is not supported
+  //   //   this.selectedFile = null;
+  //   //   this.contactForm.patchValue({ picture: '' }); // Reset the file input in the form
+  //   //   this.contactForm.get('picture')?.setErrors({ invalidFileType: true });
+  //   // }
+  // }
+  //   // Custom validation for the file type
+  //   // validateFileType(control: AbstractControl): ValidationErrors | null {
+  //   //   const file = control.value as File;
+  //   //   if (file) {
+  //   //     const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+  //   //     if (!allowedTypes.includes(file.type)) {
+  //   //       return { invalidFileType: true };
+  //   //     }
+  //   //   }
+  //   //   return null;
     // }
 }

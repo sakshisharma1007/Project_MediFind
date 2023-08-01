@@ -44,7 +44,7 @@ export class LoginComponent {
         if (response.success) {
         
           // Redirect to the home page after successful login
-          this.router.navigate(['/home/index']);
+          this.router.navigate(['/userIndex/index']);
         } else {
           // Handle login failure, show error message, etc.
           console.log(response.msg);

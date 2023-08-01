@@ -18,7 +18,7 @@ const create_token = async(id)=>{
 const securePassword  = async(psw)=>{
     try{
         const pswHash = await bcrypt.hash(psw,10);
-        console.log("Hashed Password:",pswHash);
+        //console.log("Hashed Password:",pswHash);
         return pswHash;
 
     }catch(error){
@@ -27,26 +27,21 @@ const securePassword  = async(psw)=>{
 }
 
 const sign_user = async(req,res) => {
-    console.log('Received data:', req.body);
+    //console.log('Received data:', req.body);
 
     
 
     try{
         const spassword = await securePassword(req.body.psw);
-        console.log('Received Passwoed:',spassword);
+        //console.log('Received Passwoed:',spassword);
         const user = new User({
             usname:req.body.usname,
             psw:spassword,
             
         });
-        //const userData = await user.findOne({usname:req.body.usname});
-        //if(userData){
-          //  res.status(200).send({success:false,msg:"This password already exists"});
-
-        //}else{
             const user_data = await user.save();
             res.status(200).send({success:true,data:user_data});
-        //}
+    
 
     } catch(error){
         res.status(400).send(error.message);

@@ -9,7 +9,7 @@ h1 {
 
 /* Full-width inputs */
 input[type="text"],
-input[type="password"],select {
+input[type="password"] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -51,11 +51,11 @@ button:hover {
   align-items: center;
 }
 
-/* The "Forgot password" text */
 span.sign {
   float: right;
   padding-top: 16px;
 }
+
 
 .login {
   display: flex;
@@ -66,6 +66,7 @@ span.sign {
   height: 100vh;
   align-items: center;
   font-family: "Inter";
+  flex-basis: 100%;
 }
 .form-group label span {
   color: red;
@@ -76,12 +77,13 @@ span.sign {
   
   display: flex;
   width: 50%;
+  flex-basis:50%;
   padding: 30px;
   justify-content: center;
   height: 100vh;
   align-items: center;
   font-family: "Inter";
-}
+  }
 .err_mess{
   color: red;
 }

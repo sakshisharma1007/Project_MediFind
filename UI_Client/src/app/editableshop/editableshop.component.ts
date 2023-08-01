@@ -144,6 +144,7 @@ export class EditableshopComponent implements OnInit {
           console.log(error);
         }
       );
+      
     }
   }
   saveStore() {

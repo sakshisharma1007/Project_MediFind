@@ -8,8 +8,14 @@ import { Router } from '@angular/router';
 })
 export class IndexComponent {
   constructor(private router: Router){}
+  //loggedIn: true = true;
   navigateToShop(): void {
-    this.router.navigate(['/home/med']);
+ 
+      this.router.navigate(['/login']);
+    }
+    
   }
 
-}
+
+
+
