@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class MedDetailsComponent implements OnInit{
   shops:any[] = [];
+
+  
   constructor(private http: HttpClient,private router: Router){ }
 
   signout(){
@@ -21,6 +23,17 @@ export class MedDetailsComponent implements OnInit{
       .get<any[]>('http://localhost:5000/api/shops')
       .subscribe((shops: any[]) => {
         this.shops = shops;
+        //console.log(shops);
+
+        const shopNames = shops.map((shop) => shop.ShopName);
+        console.log(shopNames); 
+      
+      
       });
+    
+  
+      
   }
+ 
+  
 }

@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { HttpClient } from '@angular/common/http';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-  FormControl,
-} from '@angular/forms';
+import { FormBuilder,FormGroup,Validators,} from '@angular/forms';
 
 
 
@@ -34,10 +29,11 @@ export class EditableshopComponent implements OnInit {
       ShopName: ['', Validators.required], // field with required validation
       OpeningTime: ['', Validators.required], // field with required validation
       ClosingTime: ['', Validators.required],
-      Location: ['', Validators.required],
+      Location: ['', [Validators.required, this.googleMapsLocationValidator()]],
       MedicineName: ['', Validators.required],
       Price: ['', Validators.required],
     });
+    
     this.fetchShops();
     this.fetchMedicines();
     //this.add();
@@ -106,6 +102,7 @@ export class EditableshopComponent implements OnInit {
   }
 
   fetchShops(): void {
+    //added jwt  
     this.http
       .get<any[]>('http://localhost:5000/api/shops')
       .subscribe((shops: any[]) => {
@@ -172,6 +169,14 @@ export class EditableshopComponent implements OnInit {
         console.log('Error deleting item:', error);
        }
     );
+  }
+  googleMapsLocationValidator(){
+    const locationPattern = /^(\d{1,2}[.]\d{1,15})[,]\s*(\d{1,3}[.]\d{1,15})$/;
+    return Validators.pattern(locationPattern);
+  }
+  isLocationControlInvalid() {
+    const locationControl = this.addForm.get('Location');
+    return locationControl?.invalid && locationControl.touched;
   }
 
 

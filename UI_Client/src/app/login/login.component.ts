@@ -31,7 +31,7 @@ export class LoginComponent {
      
   
       console.log('Username:', username);
-      console.log('Password:', password);
+      //console.log('Password:', password);
 
       
 

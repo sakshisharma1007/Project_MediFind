@@ -75,7 +75,7 @@ const login_user = async(req,res) =>{
                 }
                 res.status(200).send(response);
                 console.log(response);
-
+                 
 
             }else{
                 res.status(200).send({success:false,msg:"Login details are incorrect"});

@@ -106,18 +106,18 @@ export class ContactComponent {
 
   
   }
-  onFileSelected(event: any) {
-    const file = event.target.files[0];
+  // onFileSelected(event: any) {
+  //   const file = event.target.files[0];
 
-    // Check if the selected file is a valid image (jpeg, jpg, png)
-    if (file && !file.type.match('image/jpeg|image/jpg|image/png')) {
-     // this.isProfilePictureInvalid = true;
-      return;
-    }
+  //   // Check if the selected file is a valid image (jpeg, jpg, png)
+  //   if (file && !file.type.match('image/jpeg|image/jpg|image/png')) {
+  //    // this.isProfilePictureInvalid = true;
+  //     return;
+  //   }
 
-    //this.isProfilePictureInvalid = false;
-    this.contactForm.get('picture')?.setValue(file); // Set the form control value to the selected file
-  }
+  //   //this.isProfilePictureInvalid = false;
+  //   this.contactForm.get('picture')?.setValue(file); // Set the form control value to the selected file
+  // }
 
 
 

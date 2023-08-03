@@ -71,7 +71,11 @@
           <div class="form-group">
             <label for="Location">Location:</label>
             <input type="text" class="form-control" formControlName="Location" id="Location">
+            <div *ngIf="isLocationControlInvalid()" class="text-danger">
+              Invalid location format. Please enter a valid Google Maps location for Gurgaon, Haryana.
+            </div>
           </div>
+        
           <div class="form-group">
             <label for="MedicineName">Medicine Name:</label>
             <input type="text" class="form-control" id="MedicineName" formControlName="MedicineName">
