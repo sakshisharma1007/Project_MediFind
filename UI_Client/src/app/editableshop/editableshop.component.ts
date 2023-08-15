@@ -29,13 +29,14 @@ export class EditableshopComponent implements OnInit {
       ShopName: ['', Validators.required], // field with required validation
       OpeningTime: ['', Validators.required], // field with required validation
       ClosingTime: ['', Validators.required],
-      Location: ['', [Validators.required, this.googleMapsLocationValidator()]],
+      //Location: ['', [Validators.required,Validators.pattern(/^[a-zA-Z ]*$/) ]],
+      Location: ['', [Validators.required,Validators.pattern(/https:\/\/goo\.gl\/maps\/[a-zA-Z0-9]+/)]],
       MedicineName: ['', Validators.required],
       Price: ['', Validators.required],
     });
     
     this.fetchShops();
-    this.fetchMedicines();
+    //this.fetchMedicines();
     //this.add();
     this.editForm = this.formBuilder.group({
       MedicineName: ['', Validators.required],
@@ -84,6 +85,7 @@ export class EditableshopComponent implements OnInit {
           this.selectedShop.Price = updatePayload.Price;
           //this.fetchShops();
           this.editForm.reset();
+          alert("Details updated successfully!")
   
         },
   
@@ -109,13 +111,13 @@ export class EditableshopComponent implements OnInit {
         this.shops = shops;
       });
   }
-  fetchMedicines(): void {
-    this.http
-      .get<any[]>('http://localhost:5000/api/medicines')
-      .subscribe((medicines: any[]) => {
-        this.medicines = medicines;
-      });
-  }
+  // fetchMedicines(): void {
+  //   this.http
+  //     .get<any[]>('http://localhost:5000/api/medicines')
+  //     .subscribe((medicines: any[]) => {
+  //       this.medicines = medicines;
+  //     });
+  // }
 
   openModal() {
     this.isModalOpen = true;
@@ -144,24 +146,29 @@ export class EditableshopComponent implements OnInit {
       
     }
   }
-  saveStore() {
-    this.closeModal();
-  }
+  // saveStore() {
+  //   this.closeModal();
+  // }
   closeModal() {
     this.isModalOpen = false;
   }
   click() {
     console.log('Button clicked!');
     this.add();
+
   }
 
-    
+  // Getter for easier access in the template
+  get locationControl() {
+    return this.addForm.get('Location');
+  }
   deleteItem(id:string) {
     console.log("delete button clicked!")
     this.http.delete(`http://localhost:5000/api/delete/${id}`)
     .subscribe(
        () => {
         console.log('shop deleted successfully');
+        alert('shop deleted successfully');
          // Refresh the data after deleting
         this.fetchShops();
         },
@@ -170,14 +177,5 @@ export class EditableshopComponent implements OnInit {
        }
     );
   }
-  googleMapsLocationValidator(){
-    const locationPattern = /^(\d{1,2}[.]\d{1,15})[,]\s*(\d{1,3}[.]\d{1,15})$/;
-    return Validators.pattern(locationPattern);
-  }
-  isLocationControlInvalid() {
-    const locationControl = this.addForm.get('Location');
-    return locationControl?.invalid && locationControl.touched;
-  }
-
 
 }

@@ -59,37 +59,68 @@
           <div class="form-group">
             <label for="ShopName">Shop Name:</label>
             <input type="text" class="form-control" formControlName="ShopName" id="ShopName">
+            <div *ngIf="addForm.get('ShopName')?.invalid && (addForm.get('ShopName')?.dirty || addForm.get('ShopName')?.touched)">
+              <div  class="text-danger" *ngIf="addForm.get('ShopName')?.hasError('required')">This is mandatory file.</div>
+
+            </div>
+            
           </div>
           <div class="form-group">
             <label for="OpeningTime">Opening Time:</label>
             <input type="time" class="form-control" formControlName="OpeningTime" id="OpeningTime">
+            <div *ngIf="addForm.get('OpeningTime')?.invalid && (addForm.get('OpeningTime')?.dirty || addForm.get('OpeningTime')?.touched)">
+              <div  class="text-danger" *ngIf="addForm.get('OpeningTime')?.hasError('required')">This is mandatory file.</div>
+
+            </div>
+            
           </div>
           <div class="form-group">
             <label for="ClosingTime">Closing Time:</label>
             <input type="time" class="form-control" formControlName="ClosingTime" id="ClosingTime">
+            <div *ngIf="addForm.get('ClosingTime')?.invalid && (addForm.get('ClosingTime')?.dirty || addForm.get('ClosingTime')?.touched)">
+              <div  class="text-danger" *ngIf="addForm.get('ClosingTime')?.hasError('required')">This is mandatory file.</div>
+            </div>
+            
           </div>
           <div class="form-group">
             <label for="Location">Location:</label>
-            <input type="text" class="form-control" formControlName="Location" id="Location">
-            <div *ngIf="isLocationControlInvalid()" class="text-danger">
-              Invalid location format. Please enter a valid Google Maps location for Gurgaon, Haryana.
+            <input type="url" class="form-control" formControlName="Location" id="Location">
+            <div *ngIf="addForm.get('Location')?.invalid && (addForm.get('Location')?.dirty || addForm.get('Location')?.touched)">
+              <div  class="text-danger" *ngIf="addForm.get('Location')?.hasError('required')">This is mandatory file.</div>
+              <div  class="text-danger"  *ngIf="addForm.controls['Location'].errors?.['pattern']">Invalid format.</div>
+
             </div>
+
+            
+            <!-- <div *ngIf="isLocationControlInvalid()" class="text-danger">
+              Invalid location format. Please enter a valid Google Maps location.
+            </div> -->
+            <!-- <div *ngIf="locationControl?.invalid && locationControl?.touched">Invalid email format.</div> -->
           </div>
         
           <div class="form-group">
             <label for="MedicineName">Medicine Name:</label>
             <input type="text" class="form-control" id="MedicineName" formControlName="MedicineName">
+            <div *ngIf="addForm.get('MedicineName')?.invalid && (addForm.get('MedicineName')?.dirty || addForm.get('MedicineName')?.touched)">
+              <div  class="text-danger" *ngIf="addForm.get('MedicineName')?.hasError('required')">This is mandatory file.</div>
+          
+            </div>
           </div>
           <div class="form-group">
             <label for="Price">Price(in Rs.):</label>
             <input type="number" class="form-control" id="Price" formControlName="Price">
+            <div *ngIf="addForm.get('Price')?.invalid && (addForm.get('Price')?.dirty || addForm.get('Price')?.touched)">
+              <div  class="text-danger" *ngIf="addForm.get('Price')?.hasError('required')">This is mandatory file.</div>
+              
+            </div>
+            
           </div>
         </form>
       
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success" (click)="click()">Add</button>
+        <button type="button" class="btn btn-success"  (click)="click()">Add</button>
       </div>
     </div>
   </div>

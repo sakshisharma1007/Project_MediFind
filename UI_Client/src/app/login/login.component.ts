@@ -48,6 +48,7 @@ export class LoginComponent {
         } else {
           // Handle login failure, show error message, etc.
           console.log(response.msg);
+          alert(response.msg);
         }
       },
       (error) => {

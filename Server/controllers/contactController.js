@@ -49,6 +49,7 @@ const contact_user = async(req,res)=>{
 
       res.status(200).send({ success: true, data: contactData });
       
+      
     } catch (error) {
       res.status(400).send(error.message);
     };

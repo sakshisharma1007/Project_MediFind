@@ -38,10 +38,10 @@ export class SignupComponent {
  
   sign(){
     if(this.signForm && this.signForm.valid){
-
+      alert("You are registered successfully!");
       console.log('Username:', this.usname);
       console.log('Password:', this.psw);
-
+      
       const data ={
         usname:this.signForm.value.usname,
         psw:this.signForm.value.psw,

@@ -8,8 +8,8 @@ const verifyToken = async(req,res,next)=>{
         res.status(200).send({success:false,msg:"Token is required."});
     }
     try{
-        const descode =  jwt.verify(token,config.secret_jwt);
-        req.user = descode;
+        const decode_jwt =  jwt.verify(token,config.secret_jwt);
+        req.user = decode_jwt;
 
         return next();
 
