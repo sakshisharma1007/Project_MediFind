@@ -31,19 +31,24 @@ tr:hover {
     gap: 10px; /* Adjust this value to increase or decrease spacing between the buttons */
   }
   
-  .edit-btn {
+@mixin btnprop{
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+
+}
+.edit-btn {
     background-color: #198754;
-    color: white;
-    border: none;
-    padding: 5px;
-    border-radius: 5px;
-  }
+    @include btnprop;
+   
+}
   
-  .delete-btn {
+.delete-btn {
     background-color: red;
-    color: white;
-    border: none;
-    padding: 5px;
-    border-radius: 5px;
-  }
-  
+    @include btnprop;
+    // color: white;
+    // border: none;
+    // padding: 5px;
+    // border-radius: 5px;
+}
