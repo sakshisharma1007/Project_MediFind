@@ -62,6 +62,11 @@ const login_user = async(req,res) =>{
             const passwordMatch = await bcrypt.compare(psw,userData.psw);
             if(passwordMatch){
                 const tokenData = await create_token(userData._id);
+                //making changes from here
+                res.setHeader('Authorization', 'Bearer ' + tokenData);
+
+
+                //
                 const userResult = {
                     _id:userData._id,
                     usname:userData.usname,
@@ -75,7 +80,7 @@ const login_user = async(req,res) =>{
                 }
                 res.status(200).send(response);
                 console.log(response);
-
+                 
 
             }else{
                 res.status(200).send({success:false,msg:"Login details are incorrect"});

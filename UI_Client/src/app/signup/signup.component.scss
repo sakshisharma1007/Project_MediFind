@@ -1,3 +1,5 @@
+$color-red:red;
+
 /* Full-width input fields */
   input[type=text], input[type=password] {
   width: 100%;
@@ -30,11 +32,15 @@ button {
   cursor: pointer;
   width: 100%;
   opacity: 0.9;
+  
+  &:hover {                                                           //nesting
+      opacity:1;
+   }
 }
 
-button:hover {
-  opacity:1;
-}
+// button:hover {
+//   opacity:1;
+// }
 /* Extra styles for the cancel button */
 .cancelbtn {
     padding: 14px 20px;
@@ -72,35 +78,60 @@ button:hover {
     }
 }
 
+ // use of mixin
+
+
+@mixin flexcontent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Inter";
+
+}
 .signupForm{
-    display: flex;
+  @include flexcontent;
+    //display: flex;
     flex-direction: column;
-    justify-content: center;
+   // justify-content: center;
     height: 100vh;
     float: left;
     width: 50%;
-    align-items: center;
-    font-family: "Inter";
+    //align-items: center;
+    //font-family: "Inter";
     padding: 30px;
-    align-items: center;
+    
     
 }
 .images{
-  display: flex;
+  @include flexcontent;
+  //display: flex;
   width: 50%;
   padding: 30px;
-  justify-content: center;
+  //justify-content: center;
   height: 100vh;
-  align-items: center;
-  font-family: "Inter";
+ // align-items: center;
+  //font-family: "Inter";
 }
-.form-group label span {
-  color: red;
-  font-weight: bold;
-  margin-left: 3px;
+
+
+
+// .form-group label span {
+//   color: red;
+//   font-weight: bold;
+//   margin-left: 3px;
+// }
+
+.form-group {
+  label {
+    span {
+      color: $color-red;
+      font-weight: bold;
+      margin-left: 3px;
+    }
+  }
 }
 .err_mess{
-  color: red;
+  color: $color-red;
 }
 
 .custom-button {
@@ -112,12 +143,13 @@ button:hover {
 
 @media screen  and (max-width: 500px){
   .images{
-    display: flex;
+    @include flexcontent;
+    //display: flex;
     width: 50%;
     padding: 30px;
-    justify-content: center;
+    //justify-content: center;
     height: 50vh;
-    align-items: center;
-    font-family: "Inter";
+    //align-items: center;
+    //font-family: "Inter";
   }
 }

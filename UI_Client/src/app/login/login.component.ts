@@ -31,7 +31,7 @@ export class LoginComponent {
      
   
       console.log('Username:', username);
-      console.log('Password:', password);
+      //console.log('Password:', password);
 
       
 
@@ -48,6 +48,7 @@ export class LoginComponent {
         } else {
           // Handle login failure, show error message, etc.
           console.log(response.msg);
+          alert(response.msg);
         }
       },
       (error) => {

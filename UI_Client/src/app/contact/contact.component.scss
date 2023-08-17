@@ -1,69 +1,74 @@
-.contact-page {
-    display: flex;
-  }
+@import "../../sass/mixin";
+@include contactPage;
+
+// $color-red:red;
+
+// .contact-page {
+//     display: flex;
+//   }
   
-  .left-section {
-    flex: 1;
-    padding: 50px;
-  }
+//   .left-section {
+//     flex: 1;
+//     padding: 50px;
+//   }
   
-  .right-section {
-    flex: 1;
-    padding: 50px;
-  }
+//   .right-section {
+//     flex: 1;
+//     padding: 50px;
+//   }
   
-  form {
-    display: grid;
-    grid-gap: 10px;
+//   form {
+//     display: grid;
+//     grid-gap: 10px;
     
-  }
-  h3{
-    color: black;
-  }
+//   }
+//   h3{
+//     color: black;
+//   }
   
-  label {
-    font-weight: bold;
-  }
+//   label {
+//     font-weight: bold;
+//   }
   
-  input,
-  textarea {
-    width: 100%;
-    padding: 5px;
-  }
+//   input,
+//   textarea {
+//     width: 100%;
+//     padding: 5px;
+//   }
 
-input[type=text], input[type=password], input[type=email], textarea {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-.image1{
-  display: flex;
+// input[type=text], input[type=password], input[type=email], textarea {
+//     width: 100%;
+//     padding: 12px 20px;
+//     margin: 8px 0;
+//     display: inline-block;
+//     border: 1px solid #ccc;
+//     box-sizing: border-box;
+// }
+// .image1{
+//   display: flex;
   
-}
-.form-group label span {
-  color: red;
-  font-weight: bold;
-  margin-left: 3px;
-}
-.err_mess{
-  color: red;
-}
+// }
+// .form-group label span {
+//   color: $color-red;
+//   font-weight: bold;
+//   margin-left: 3px;
+// }
+// .err_mess{
+//   color: $color-red;
+// }
   
-@media (max-width: 768px) {
-  .contact-page {
-    flex-direction: column;
-  }
+// @media (max-width: 768px) {
+//   .contact-page {
+//     flex-direction: column;
+//   }
 
-  .left-section,
-  .right-section {
-    flex: 1;
-    padding: 30px;
-  }
+//   .left-section,
+//   .right-section {
+//     flex: 1;
+//     padding: 30px;
+//   }
 
-  form {
-    grid-template-columns: 1fr;
-  }
-}
+//   form {
+//     grid-template-columns: 1fr;
+//   }
+// }
