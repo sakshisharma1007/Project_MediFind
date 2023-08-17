@@ -1,32 +1,35 @@
-$bg-color-green:#198754;
+@import "../../sass/mixin";
+@include homePage;
 
-.navbar{
-  width: 100%;
-  height: fit-content;
-  background-color:$bg-color-green ;
+// $bg-color-green:#198754;
 
-  a{
-    color: #e9ecef;
-    text-decoration: none;
-    font-size: 16px;
-    padding: 10px;
-    font-weight: bold;
+// .navbar{
+//   width: 100%;
+//   height: fit-content;
+//   background-color:$bg-color-green ;
 
-    &:hover {
-      color: white;
-    }
-  }
-  .signup-link,
-  .signin-link {
-    bottom: 10px;
-    color: white;
+//   a{
+//     color: #e9ecef;
+//     text-decoration: none;
+//     font-size: 16px;
+//     padding: 10px;
+//     font-weight: bold;
 
-    &.signin-link {
-      padding-right: 10px;
-    }
-  }
+//     &:hover {
+//       color: white;
+//     }
+//   }
+//   .signup-link,
+//   .signin-link {
+//     bottom: 10px;
+//     color: white;
 
-}
+//     &.signin-link {
+//       padding-right: 10px;
+//     }
+//   }
+
+// }
 
 
 // .navbar a{
@@ -39,9 +42,9 @@ $bg-color-green:#198754;
 // .navbar a:hover {
 //   color: white;
 // }
-.button-spacing {
-  margin-left: 10px;
-}
+// .button-spacing {
+//   margin-left: 10px;
+// }
 
 
 @media screen and (max-height: 450px) {
@@ -58,71 +61,71 @@ $bg-color-green:#198754;
 //   color: white;
 // }
 
-.footer{
-background-color: $bg-color-green;
-padding: 70px 0;
-margin-bottom: 0%;&-col {
-  width: 25%;
-  padding: 0 15px;
+// .footer{
+// background-color: $bg-color-green;
+// padding: 70px 0;
+// margin-bottom: 0%;&-col {
+//   width: 25%;
+//   padding: 0 15px;
 
-  h4 {
-    font-size: 18px;
-    color: white;
-    text-transform: capitalize;
-    margin-bottom: 35px;
-    font-weight: bold;
+//   h4 {
+//     font-size: 18px;
+//     color: white;
+//     text-transform: capitalize;
+//     margin-bottom: 35px;
+//     font-weight: bold;
 
-    &::before {
-      left: 0;
-      bottom: -10px;
-      background-color: white;
-      height: 2px;
-      box-sizing: border-box;
-      width: 50px;
-    }
-  }
+//     &::before {
+//       left: 0;
+//       bottom: -10px;
+//       background-color: white;
+//       height: 2px;
+//       box-sizing: border-box;
+//       width: 50px;
+//     }
+//   }
 
-  ul li {
-    margin-bottom: 10px;
-    margin-left: -25px;
-    list-style-type: none;
+//   ul li {
+//     margin-bottom: 10px;
+//     margin-left: -25px;
+//     list-style-type: none;
 
-    a {
-      font-size: 16px;
-      text-transform: capitalize;
-      text-decoration: none;
-      font-weight: 300;
-      color: #e9ecef;
-      vertical-align: left;
-      transition: all 0.3s ease;
+//     a {
+//       font-size: 16px;
+//       text-transform: capitalize;
+//       text-decoration: none;
+//       font-weight: 300;
+//       color: #e9ecef;
+//       vertical-align: left;
+//       transition: all 0.3s ease;
 
-      &:hover {
-        color: white;
-        padding-left: 8px;
-      }
-    }
-  }
-  .social-links a {
-    display: inline-block;
-    height: 40px;
-    width: 40px;
-    background-color: rgba(255, 255, 255, 0.2);
-    margin: 0 10px 10px 0;
-    text-align: center;
-    line-height: 40px;
-    border-radius: 50%;
-    color: #e9ecef;
-    transition: all 0.5s ease;
+//       &:hover {
+//         color: white;
+//         padding-left: 8px;
+//       }
+//     }
+//   }
+//   .social-links a {
+//     display: inline-block;
+//     height: 40px;
+//     width: 40px;
+//     background-color: rgba(255, 255, 255, 0.2);
+//     margin: 0 10px 10px 0;
+//     text-align: center;
+//     line-height: 40px;
+//     border-radius: 50%;
+//     color: #e9ecef;
+//     transition: all 0.5s ease;
 
-    &:hover {
-      color: #5B5750;
-      background-color: #ffffff;
-    }
-  }
-}
+//     &:hover {
+//       color: #5B5750;
+//       background-color: #ffffff;
+//     }
+//   }
+// }
  
 
-}
+// }
 
 // .footer-col{
 //  width: 25%;
@@ -193,8 +196,6 @@ margin-bottom: 0%;&-col {
   width: 100%;
 }
 }
-
-
 
 .row{
   display: flex;
